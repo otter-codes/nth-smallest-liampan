@@ -55,5 +55,14 @@ class HelloSpec extends WordSpec with MustMatchers {
       Hello.apply(List(10,10,12,13,3,2,2,5),3) mustEqual 10
     }
 
+    "catch exception when given list(4,3,3,3,1) and 4 \n   +because duplictaes would leave list wih out index" in {
+
+      val Ex = intercept[Exception] {
+        Hello.apply(List(4, 3, 3, 3, 1), 4)
+      }
+
+      Ex.getMessage mustEqual "index not allowed"
+    }
+
   }
 }
